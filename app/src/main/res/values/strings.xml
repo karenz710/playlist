@@ -1,3 +1,44 @@
 <resources>
     <string name="app_name">Hw2App</string>
+    <!-- res/values/strings.xml -->
+    <string-array name="song_titles">
+        <item>Danse Macabre</item>
+        <item>Entry of the Gladiators</item>
+        <item>Auld Lang Syne</item>
+        <item>1812 Overture</item>
+        <item>FanfareForTheCommonMan</item>
+        <item>Marriage of Figaro</item>
+        <item>Ode to Joy</item>
+        <item>Sprach Zarathustra</item>
+    </string-array>
+    <string-array name="song_artists">
+        <item>Camille Saint-Saens</item>
+        <item>Julius Fucik</item>
+        <item>Robert Burns</item>
+        <item>Pyotr Tchaikovsky</item>
+        <item>Aaron Copland</item>
+        <item>Mozart</item>
+        <item>Beethoven</item>
+        <item>Richard Strauss</item>
+    </string-array>
+    <string-array name="song_albums">
+        <item>Opus 40</item>
+        <item>40 Famous Marches</item>
+        <item>Hogmanay</item>
+        <item>Royal Albert Hall</item>
+        <item>Just Classics 2</item>
+        <item>Le nozze di Figaro</item>
+        <item>An die Freude</item>
+        <item>Thus Spake Zarathustra</item>
+    </string-array>
+    <string-array name="song_lengths">
+        <item>10</item>
+        <item>9</item>
+        <item>11</item>
+        <item>9</item>
+        <item>9</item>
+        <item>10</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
 </resources>

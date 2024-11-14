@@ -42,21 +42,19 @@
                 android:text="Pyotr Tchaikovsky"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/song_name"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@+id/song_name" />
 
             <TextView
                 android:id="@+id/album"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="170dp"
+                android:layout_marginStart="165dp"
                 android:text="Royal Albert Hall"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.557" />
+                app:layout_constraintTop_toTopOf="@+id/artist" />
 
             <TextView
                 android:id="@+id/length"

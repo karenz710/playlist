@@ -23,6 +23,7 @@
         android:id="@+id/bottom_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.5"
@@ -49,13 +50,12 @@
             android:id="@+id/play_random"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
             android:background="@drawable/baseline_question_mark_24"
             android:minWidth="48dp"
             android:minHeight="48dp"
-            app:layout_constraintBottom_toBottomOf="@+id/cursor_next"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/cursor_next"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@+id/shuffle"
+            app:layout_constraintEnd_toStartOf="@+id/shuffle" />
 
         <Button
             android:id="@+id/cursor_before"
@@ -73,6 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="0dp"
+            android:layout_marginTop="168dp"
             android:background="@drawable/baseline_navigate_next_24"
             android:padding="0dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -81,45 +82,57 @@
 
         <Button
             android:id="@+id/cursor_add"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/baseline_add_circle_outline_24"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/button_border"
+            android:text="Add Song"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toStartOf="@+id/cursor_remove"
+            app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cursor_before" />
 
         <Button
             android:id="@+id/cursor_remove"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:background="@drawable/baseline_remove_circle_outline_24"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/button_border"
+            android:text="Remove Song"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toEndOf="@+id/cursor_add"
             app:layout_constraintTop_toBottomOf="@+id/cursor_before" />
 
         <Button
             android:id="@+id/shuffle"
-            android:layout_width="wrap_content"
+            android:layout_width="48dp"
             android:layout_height="48dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="24dp"
             android:background="@drawable/baseline_shuffle_24"
             android:minWidth="48dp"
             android:minHeight="48dp"
-            tools:layout_editor_absoluteX="216dp"
-            tools:layout_editor_absoluteY="122dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/clear_playlist" />
 
         <Button
             android:id="@+id/clear_playlist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="24dp"
             android:background="@drawable/baseline_playlist_remove_24"
             android:minWidth="48dp"
             android:minHeight="48dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
-        <!-- Add more elements here as needed -->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

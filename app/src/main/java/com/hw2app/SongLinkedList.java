@@ -28,6 +28,13 @@ public class SongLinkedList {
         cursor = null;
     }
 
+    /**
+     * Plays the song at the SongNode!!
+     * @param song
+     */
+    public void play(SongNode song){
+
+    }
 
     /**
      * Moves the cursor to point at the next SongNode.

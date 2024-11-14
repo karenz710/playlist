@@ -63,6 +63,5 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
             itemView.setClickable(false);
             itemView.setFocusable(false);
         }
-
     }
 }
