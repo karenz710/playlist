@@ -13,7 +13,7 @@ public class SongLinkedList {
     private int size;
     private MediaPlayer mediaPlayer;
     private Context context;
-    private TextView currentSongTextView;
+    private TextView currentlyPlayingText;
 
     public SongLinkedList() {
         head = null;
@@ -21,9 +21,10 @@ public class SongLinkedList {
         cursor = null;
     }
 
-    public SongLinkedList(Context context) {
+    public SongLinkedList(Context context, TextView currentlyPlayingText) {
         this();
         this.context = context;
+        this.currentlyPlayingText = currentlyPlayingText;
     }
 
     public SongNode getCursor() {
@@ -57,6 +58,8 @@ public class SongLinkedList {
             if (resId != 0) {
                 mediaPlayer = MediaPlayer.create(context, resId);
                 mediaPlayer.start();
+                // Update the TextView with the current song name
+                currentlyPlayingText.setText("Currently Playing: " + song.getData().getName());
             }
         }
 
@@ -130,6 +133,8 @@ public class SongLinkedList {
                 tail = cursor.getNext();
             }
             cursorForwards(); // change cursor reference to newly inserted Song
+            if(cursor.getNext()!=null)
+                cursor.getNext().setPrev(cursor);
         }
         size++; // increments size since a node is added.
     }
@@ -190,7 +195,7 @@ public class SongLinkedList {
      *
      * @return The Song which was randomly selected.
      */
-     public void playRandom(){
+    public void playRandom(){
          SongNode res = randomSongNode();
          play(res);
      }

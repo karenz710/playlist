@@ -22,7 +22,6 @@
         android:id="@+id/bottom_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.5"
@@ -32,6 +31,18 @@
         app:layout_constraintVertical_bias="0.0">
 
         <!-- Other UI elements for the bottom half of the screen -->
+
+
+        <TextView
+            android:id="@+id/currently_playing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Currently Playing:"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/play_random" />
 
         <Button
             android:id="@+id/play_arrow"
@@ -44,17 +55,6 @@
             app:layout_constraintEnd_toStartOf="@+id/cursor_next"
             app:layout_constraintStart_toEndOf="@+id/cursor_before"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/play_random"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/baseline_question_mark_24"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
-            app:layout_constraintBottom_toBottomOf="@+id/shuffle"
-            app:layout_constraintEnd_toStartOf="@+id/shuffle" />
 
         <Button
             android:id="@+id/cursor_before"
@@ -107,6 +107,21 @@
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toEndOf="@+id/cursor_add"
             app:layout_constraintTop_toBottomOf="@+id/cursor_before" />
+
+        <Button
+            android:id="@+id/play_random"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_border"
+            android:text="Play Random Song"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/cursor_add"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/cursor_add"
+            app:layout_constraintTop_toBottomOf="@+id/cursor_add"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/shuffle"

@@ -10,6 +10,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -23,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     Button cursorAdd;
     Button shuffle;
     Button clearPlaylist;
+    Button randomSong;
+    TextView currentlyPlayingText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,17 +33,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        playlist = new SongLinkedList(this);
+        currentlyPlayingText = findViewById(R.id.currently_playing);
+        playlist = new SongLinkedList(this, currentlyPlayingText);
         cursorPlay = findViewById(R.id.play_arrow);
         cursorPrev = findViewById(R.id.cursor_before);
         cursorNext = findViewById(R.id.cursor_next);
         cursorRemove = findViewById(R.id.cursor_remove);
         cursorAdd = findViewById(R.id.cursor_add);
+        randomSong = findViewById(R.id.play_random);
         shuffle = findViewById(R.id.shuffle);
         clearPlaylist = findViewById(R.id.clear_playlist);
         adapter = new SongAdapter(playlist);
         recyclerView.setAdapter(adapter);
-
 
         cursorPlay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +84,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        randomSong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                playlist.playRandom();
+                adapter.notifyDataSetChanged();
+            }
+        });
         shuffle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
