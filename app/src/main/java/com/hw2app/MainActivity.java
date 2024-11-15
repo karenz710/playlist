@@ -6,10 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.view.ViewGroup;
@@ -33,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        playlist = new SongLinkedList();
+        playlist = new SongLinkedList(this);
         cursorPlay = findViewById(R.id.play_arrow);
         cursorPrev = findViewById(R.id.cursor_before);
         cursorNext = findViewById(R.id.cursor_next);
@@ -44,14 +41,19 @@ public class MainActivity extends AppCompatActivity {
         adapter = new SongAdapter(playlist);
         recyclerView.setAdapter(adapter);
 
+
         cursorPlay.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v) {
+            @Override
+            public void onClick(View v) {
                 playlist.play(playlist.getCursor());
             }
         });
+
         cursorAdd.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v) {
-            showAddSongDialog(); }
+            @Override
+            public void onClick(View v) {
+                showAddSongDialog();
+            }
         });
 
         cursorPrev.setOnClickListener(new View.OnClickListener() {
@@ -93,26 +95,30 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void showAddSongDialog(){
+    private void showAddSongDialog() {
         final Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialog_add_song);
         RecyclerView recyclerViewSongs = dialog.findViewById(R.id.recycler_view_all_songs);
         recyclerViewSongs.setLayoutManager(new LinearLayoutManager(this));
         SongLinkedList entireSongList = getAvailableSongs();
         AllSongAdapter adapter = new AllSongAdapter(entireSongList, new AllSongAdapter.OnItemClickListener() {
-            @Override public void onItemClick(Song song) {
+            @Override
+            public void onItemClick(Song song) {
                 playlist.insertAfterCursor(song);
                 MainActivity.this.adapter.notifyDataSetChanged();
                 dialog.dismiss();
             }
-        }); recyclerViewSongs.setAdapter(adapter); dialog.show();
+        });
+        recyclerViewSongs.setAdapter(adapter);
+        dialog.show();
         // Set the dialog window to match the parent width
         if (dialog.getWindow() != null) {
             dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        } dialog.show();
+        }
+        dialog.show();
     }
 
-    private SongLinkedList getAvailableSongs(){
+    private SongLinkedList getAvailableSongs() {
         SongLinkedList result = new SongLinkedList();
         String[] songTitles = getResources().getStringArray(R.array.song_titles);
         String[] songArtists = getResources().getStringArray(R.array.song_artists);

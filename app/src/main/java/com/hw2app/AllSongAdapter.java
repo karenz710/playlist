@@ -9,8 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class AllSongAdapter extends RecyclerView.Adapter<AllSongAdapter.SongViewHolder> {
-    private SongLinkedList playlist;
-    private OnItemClickListener listener;
+    private final SongLinkedList playlist;
+    private final OnItemClickListener listener;
     private static final int MAX_CHAR_LENGTH = 13;
     public interface OnItemClickListener {
         void onItemClick(Song song);

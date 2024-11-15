@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.core.content.ContextCompat;
 
 public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder> {
-    private SongLinkedList playlist;
+    private final SongLinkedList playlist;
 
     // Constructor for the adapter, takes a DoublyLinkedList of songs
     public SongAdapter(SongLinkedList playlist) {
@@ -34,10 +34,12 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
             holder.songAlbum.setText(song.getAlbum());
             holder.songLength.setText(song.getFormattedLength());
         }
+        // Change the background color of the CardView based on the cursor position
+        androidx.cardview.widget.CardView cardView = holder.itemView.findViewById(R.id.card_view);
         if (node == playlist.getCursor()) {
-            holder.itemView.setBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.highlight_color));
+            cardView.setCardBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.highlight_color));
         }else { // Reset background color for non-cursor nodes
-            holder.itemView.setBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(), android.R.color.transparent)); }
+            cardView.setCardBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(), android.R.color.white)); }
     }
 
     @Override
