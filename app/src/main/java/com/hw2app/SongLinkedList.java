@@ -4,8 +4,6 @@ import android.content.Context;
 import android.media.MediaPlayer;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 public class SongLinkedList {
     private SongNode head;
     private SongNode tail;
@@ -62,9 +60,17 @@ public class SongLinkedList {
                 currentlyPlayingText.setText("Currently Playing: " + song.getData().getName());
             }
         }
-
     }
 
+    public void pause() {
+        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+            mediaPlayer.pause();
+        }
+    }
+
+    public boolean isPlaying() {
+        return mediaPlayer != null && mediaPlayer.isPlaying();
+    }
     /**
      * Moves the cursor to point at the next SongNode.
      *
@@ -231,21 +237,23 @@ public class SongLinkedList {
      * <dd>cursor should reference the SongNode which contains the same Song as when this method was entered.
      */
     public void shuffle() {
-        Song originalCursor = cursor.getData(); // To later point the new cursor to the same node.
-        SongLinkedList shuffled = new SongLinkedList(); // initialize a new list to store randomized SongNodes
-        while (this.size > 0) {
-            shuffled.insertNode(this.removeRandomNode(), shuffled); // insert in order in shuffled a randomly removed node from playlist
-            // unnecessary to decrement size since removeRandomNode uses method removeCursor() which decrements size
+        if(size>0) {
+            Song originalCursor = cursor.getData(); // To later point the new cursor to the same node.
+            SongLinkedList shuffled = new SongLinkedList(); // initialize a new list to store randomized SongNodes
+            while (this.size > 0) {
+                shuffled.insertNode(this.removeRandomNode(), shuffled); // insert in order in shuffled a randomly removed node from playlist
+                // unnecessary to decrement size since removeRandomNode uses method removeCursor() which decrements size
+            }
+            // Set shuffled to playlist
+            this.head = shuffled.head;
+            SongNode pointer = head;
+            while (pointer.getData() != originalCursor) { // back to original cursor pointer O(n) time complexity
+                pointer = pointer.getNext();
+            }
+            this.cursor = pointer;
+            this.tail = shuffled.tail;
+            this.size = shuffled.size;
         }
-        // Set shuffled to playlist
-        this.head = shuffled.head;
-        SongNode pointer = head;
-        while (pointer.getData() != originalCursor) { // back to original cursor pointer O(n) time complexity
-            pointer = pointer.getNext();
-        }
-        this.cursor = pointer;
-        this.tail = shuffled.tail;
-        this.size = shuffled.size;
     }
 
     /**

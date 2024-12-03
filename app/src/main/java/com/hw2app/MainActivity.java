@@ -1,16 +1,22 @@
 package com.hw2app;
 
+import android.Manifest;
+import android.app.Dialog;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import android.provider.MediaStore;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import android.app.Dialog;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -49,7 +55,13 @@ public class MainActivity extends AppCompatActivity {
         cursorPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                playlist.play(playlist.getCursor());
+                if (playlist.isPlaying()) {
+                    playlist.pause();
+                    cursorPlay.setBackgroundResource(R.drawable.baseline_play_arrow_24);
+                } else {
+                    playlist.play(playlist.getCursor());
+                    cursorPlay.setBackgroundResource(R.drawable.baseline_pause_24);
+                }
             }
         });
 
@@ -83,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
             }
         });
+
 
         randomSong.setOnClickListener(new View.OnClickListener() {
             @Override

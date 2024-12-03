@@ -12,6 +12,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
     // Constructor for the adapter, takes a DoublyLinkedList of songs
     public SongAdapter(SongLinkedList playlist) {
         this.playlist = playlist;
+        setStateRestorationPolicy((StateRestorationPolicy.PREVENT_WHEN_EMPTY));
     }
 
     @Override

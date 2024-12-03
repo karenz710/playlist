@@ -12,6 +12,7 @@ public class AllSongAdapter extends RecyclerView.Adapter<AllSongAdapter.SongView
     private final SongLinkedList playlist;
     private final OnItemClickListener listener;
     private static final int MAX_CHAR_LENGTH = 13;
+
     public interface OnItemClickListener {
         void onItemClick(Song song);
     }
